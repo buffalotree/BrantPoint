@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Node / build tooling (in case the design adds a build step later)
+node_modules/
+dist/
+build/
+.cache/
+.parcel-cache/
+
+# Env / secrets
+.env
+.env.local
+.env.*.local

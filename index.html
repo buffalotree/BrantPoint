@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brantpoint</title>
+  <meta name="description" content="Brantpoint — site coming soon." />
+  <style>
+    :root {
+      --bg: #0f1115;
+      --fg: #f4f1ea;
+      --muted: #9aa0aa;
+      --accent: #c8a96a;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+      display: grid;
+      place-items: center;
+      min-height: 100svh;
+      text-align: center;
+      padding: 2rem;
+    }
+    .wrap { max-width: 32rem; }
+    h1 {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      letter-spacing: 0.04em;
+      margin: 0 0 0.5rem;
+      font-weight: 500;
+    }
+    .rule {
+      width: 3rem;
+      height: 2px;
+      background: var(--accent);
+      margin: 1.25rem auto;
+      border: 0;
+    }
+    p {
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      color: var(--muted);
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>Brantpoint</h1>
+    <hr class="rule" />
+    <p>Site coming soon</p>
+  </main>
+</body>
+</html>
