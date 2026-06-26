@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- BPC-perf-hints: resource hints to warm runtime/image/font origins (non-visual) -->
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="dns-prefetch" href="https://unpkg.com">
+  <link rel="preconnect" href="https://brantpointcourtyard.com">
+  <link rel="dns-prefetch" href="https://brantpointcourtyard.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://upload.wikimedia.org">
+  <link rel="preload" as="script" href="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin>
+  <link rel="preload" as="script" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin>
 <script>
 /* BPC-static-fixes — inlined so it runs before the Claude Design runtime takes over.
    1) Mobile burger works instantly (document-level, capture phase, runtime-independent).
