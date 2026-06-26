@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script>
+/* BPC-static-fixes — inlined so it runs before the Claude Design runtime takes over.
+   1) Mobile burger works instantly (document-level, capture phase, runtime-independent).
+   2) Empty <image-slot>s (no data-filled) are hidden so the editor placeholder never shows. */
+(function () {
+  document.addEventListener('click', function (e) {
+    var nav = document.querySelector('nav.bpc-nav'); if (!nav) return;
+    var burger = e.target && e.target.closest ? e.target.closest('.bpc-burger') : null;
+    if (burger) { e.preventDefault(); e.stopImmediatePropagation(); nav.toggleAttribute('data-open'); return; }
+    if (nav.hasAttribute('data-open') && !nav.contains(e.target)) nav.removeAttribute('data-open');
+  }, true);
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('nav.bpc-nav a') : null;
+    if (a) { var nav = document.querySelector('nav.bpc-nav'); if (nav) nav.removeAttribute('data-open'); }
+  });
+  function tidy(){ var s=document.querySelectorAll('image-slot'); for(var i=0;i<s.length;i++){ s[i].style.display = s[i].hasAttribute('data-filled') ? '' : 'none'; } }
+  function start(){ tidy(); var n=0, iv=setInterval(function(){ tidy(); if(++n>=12) clearInterval(iv); }, 350); window.addEventListener('load', tidy); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
+</script>
   <meta charset="utf-8">
   <title>Contact &amp; Reservations | Brant Point Courtyard, Nantucket</title>
   <style>
