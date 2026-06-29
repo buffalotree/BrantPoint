@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- BPC-perf-hints -->
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+<link rel="dns-prefetch" href="https://unpkg.com">
+<link rel="preconnect" href="https://brantpointcourtyard.com">
+<link rel="dns-prefetch" href="https://brantpointcourtyard.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>Week Dates Lookup | Brant Point Courtyard, Nantucket</title>
+<meta name="description" content="Look up the Saturday-to-Saturday dates for your ownership week at Brant Point Courtyard, 2026 through 2032.">
+<meta name="theme-color" content="#14323b">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+/* BPC-static-fixes — mobile burger (document-level, capture phase, runtime-independent). */
+(function () {
+  document.addEventListener('click', function (e) {
+    var nav = document.querySelector('nav.bpc-nav'); if (!nav) return;
+    var burger = e.target && e.target.closest ? e.target.closest('.bpc-burger') : null;
+    if (burger) { e.preventDefault(); e.stopImmediatePropagation(); nav.toggleAttribute('data-open'); return; }
+    if (nav.hasAttribute('data-open') && !nav.contains(e.target)) nav.removeAttribute('data-open');
+  }, true);
+  document.addEventListener('click', function (e) {
+    var link = e.target && e.target.closest ? e.target.closest('nav.bpc-nav a') : null;
+    if (link) { var nav = document.querySelector('nav.bpc-nav'); if (nav) nav.removeAttribute('data-open'); }
+  });
+})();
+/* BPC-prefetch — warm sibling pages on intent (hover/touch) + idle. */
+(function () {
+  var done = {};
+  function pf(href) {
+    if (!href) return;
+    var file = href.split('#')[0].split('?')[0];
+    if (!/^[A-Za-z0-9_.-]+\.html$/.test(file) || done[file]) return;
+    done[file] = 1;
+    var l = document.createElement('link'); l.rel = 'prefetch'; l.href = file; document.head.appendChild(l);
+  }
+  function onIntent(e) { var a = e.target && e.target.closest ? e.target.closest('a[href]') : null; if (a) pf(a.getAttribute('href')); }
+  document.addEventListener('mouseover', onIntent, { passive: true });
+  document.addEventListener('touchstart', onIntent, { passive: true });
+  var c = navigator.connection;
+  if (c && (c.saveData || /(^|-)2g$/.test(c.effectiveType || ''))) return;
+  function warm() { ['Home.html','Cottage.html','Gallery.html','Sales.html','Contact.html'].forEach(function (p) { if (p !== location.pathname.split('/').pop()) pf(p); }); }
+  window.addEventListener('load', function () { if ('requestIdleCallback' in window) requestIdleCallback(warm, { timeout: 5000 }); else setTimeout(warm, 1800); });
+})();
+</script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Hanken Grotesk', system-ui, sans-serif; color: #1c2a2e; background: #f2eee4; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  input, select { font-family: inherit; }
+
+  /* nav */
+  .bpc-burger { display: none; }
+  nav.bpc-nav { display: flex; }
+  nav.bpc-nav a:hover { color: #a6824d; }
+  [data-owners]:hover [data-owners-menu] { display: block !important; }
+  @media (max-width: 880px) {
+    .bpc-burger { display: flex !important; }
+    nav.bpc-nav { position: absolute; top: calc(100% + 10px); right: 0; left: auto; width: min(264px,76vw); flex-direction: column !important; align-items: stretch !important; gap: 2px !important; background: #f2eee4; border: 1px solid rgba(28,42,46,.14); border-radius: 12px; padding: 10px !important; box-shadow: 0 22px 44px -20px rgba(20,50,59,.45); display: none; }
+    nav.bpc-nav[data-open] { display: flex !important; }
+    nav.bpc-nav > a, nav.bpc-nav > div[data-owners] { padding: 12px 14px !important; }
+    nav.bpc-nav [data-owners] { display: block !important; }
+    nav.bpc-nav [data-owners-menu] { position: static !important; transform: none !important; padding-top: 4px !important; display: block !important; }
+    nav.bpc-nav [data-owners-menu] > div { box-shadow: none !important; border: none !important; background: transparent !important; min-width: 0 !important; padding: 0 !important; }
+    .bpc-util-email { display: none !important; }
+    .bpc-wd-callouts { grid-template-columns: 1fr !important; }
+    .bpc-wd-tablesec { padding-left: 18px !important; padding-right: 18px !important; }
+  }
+
+  /* week-dates table */
+  .bpc-wd-table { border-collapse: separate; border-spacing: 0; width: 100%; font-size: 14px; table-layout: fixed; }
+  .bpc-wd-table th, .bpc-wd-table td { padding: 11px 14px; text-align: left; border-bottom: 1px solid rgba(28,42,46,.09); vertical-align: top; line-height: 1.35; }
+  .bpc-wd-table thead th { white-space: nowrap; }
+  .bpc-wd-table tbody td:first-child { white-space: nowrap; }
+  .bpc-wd-table thead th { position: sticky; top: 0; background: #14323b; color: #e7d8bd; font-weight: 600; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; z-index: 3; border-bottom: none; }
+  .bpc-wd-table thead th:first-child { position: sticky; left: 0; z-index: 4; }
+  .bpc-wd-table tbody td:first-child { position: sticky; left: 0; background: #f3ede0; font-family: 'Newsreader', serif; font-size: 17px; font-weight: 500; color: #14323b; z-index: 2; }
+  .bpc-wd-table tbody tr:nth-child(even) td { background: #fbf8f1; }
+  .bpc-wd-table tbody tr:nth-child(even) td:first-child { background: #eee7d8; }
+  .bpc-wd-table col.bpc-now { background: rgba(166,130,77,.12); }
+  .bpc-wd-table th.bpc-now-h { background: #a6824d; color: #fff; }
+  .bpc-wd-table tbody tr[data-now] td { background: #1d4350 !important; color: #f2eee4 !important; }
+  .bpc-wd-table tbody tr[data-now] td:first-child { background: #0f262d !important; color: #e7d8bd !important; }
+  .bpc-wd-table tbody tr[data-now] td.bpc-now-cell { background: #a6824d !important; color: #fff !important; font-weight: 700; }
+  .bpc-wd-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid rgba(28,42,46,.12); border-radius: 14px; background: #fff; box-shadow: 0 22px 60px -38px rgba(20,50,59,.5); }
+  .bpc-wd-mobile { display: none; }
+  @media (max-width: 760px) {
+    .bpc-wd-scroll, .bpc-wd-note { display: none !important; }
+    .bpc-wd-mobile { display: block !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- utility bar -->
+<div style="background:#14323b;color:#cdd8d2;font-size:12.5px;letter-spacing:.04em">
+  <div style="max-width:1240px;margin:0 auto;padding:9px 32px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+    <div style="display:flex;gap:22px;align-items:center;flex-wrap:wrap">
+      <a href="https://maps.app.goo.gl/YhYcWs8UfTMVi1Yf8" target="_blank" rel="noopener" style="display:flex;gap:7px;align-items:center"><span style="opacity:.6">&#9672;</span>15 Swain Street, Nantucket</a>
+      <a href="tel:1-508-228-0241" style="display:flex;gap:7px;align-items:center"><span style="opacity:.6">&#9990;</span>508&middot;228&middot;0241</a>
+    </div>
+    <a class="bpc-util-email" href="mailto:resortmanager@brantpointcourtyard.com" style="opacity:.85">resortmanager@brantpointcourtyard.com</a>
+  </div>
+</div>
+
+<!-- nav -->
+<header style="position:relative;z-index:50;background:rgba(242,238,228,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(28,42,46,.1)">
+  <div style="max-width:1240px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;position:relative">
+    <a href="Home.html" style="display:flex;flex-direction:column;line-height:1">
+      <span style="font-family:'Newsreader',serif;font-size:23px;font-weight:500;letter-spacing:.01em">Brant Point Courtyard</span>
+      <span style="font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;color:#6f7d77;margin-top:5px">Nantucket Island</span>
+    </a>
+    <button class="bpc-burger" aria-label="Menu" style="flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:none;border:1px solid rgba(28,42,46,.2);border-radius:8px;cursor:pointer;padding:0 11px"><span style="height:2px;background:#14323b;border-radius:2px"></span><span style="height:2px;background:#14323b;border-radius:2px"></span><span style="height:2px;background:#14323b;border-radius:2px"></span></button>
+    <nav class="bpc-nav" style="align-items:center;gap:30px;font-size:14px;font-weight:500;letter-spacing:.02em">
+      <a href="Home.html">Home</a>
+      <a href="Discover.html">Nantucket</a>
+      <a href="Gallery.html">Rentals</a>
+      <a href="Sales.html" style="color:#14323b;font-weight:700">Ownership</a>
+      <div data-owners style="position:relative;display:inline-flex;align-items:center">
+        <span style="display:inline-flex;align-items:center;gap:6px;cursor:default">Owners <span style="font-size:8px;color:#6f7d77;transform:translateY(1px)">&#9660;</span></span>
+        <div data-owners-menu style="position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:14px;display:none;z-index:60">
+          <div style="background:#fff;border:1px solid rgba(28,42,46,.12);border-radius:10px;box-shadow:0 20px 44px -22px rgba(20,50,59,.45);min-width:226px;padding:8px">
+            <a href="WeekDates.html" style="display:flex;flex-direction:column;gap:2px;padding:11px 14px;border-radius:6px;text-transform:none;letter-spacing:0">
+              <span style="font-weight:600;font-size:14px;color:#14323b">Week Dates Lookup</span>
+              <span style="font-size:12px;color:#6f7d77;font-weight:400">Find your week's dates by year</span>
+            </a>
+            <a href="https://connect.capitalvacations.com/Account/Logon?ReturnUrl=%2f" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:2px;padding:11px 14px;border-radius:6px;text-transform:none;letter-spacing:0">
+              <span style="font-weight:600;font-size:14px;color:#14323b">Capital Vacations</span>
+              <span style="font-size:12px;color:#6f7d77;font-weight:400">Owner login portal</span>
+            </a>
+            <a href="#" style="display:flex;flex-direction:column;gap:2px;padding:11px 14px;border-radius:6px;text-transform:none;letter-spacing:0">
+              <span style="font-weight:600;font-size:14px;color:#14323b">Owner Group</span>
+              <span style="font-size:12px;color:#6f7d77;font-weight:400">Link coming soon</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <a href="Contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div style="overflow-x:clip">
+  <!-- header -->
+  <section style="max-width:1240px;margin:0 auto;padding:72px 32px 8px">
+    <div style="font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:#a6824d;margin-bottom:18px">Owner Resources</div>
+    <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(38px,5vw,68px);line-height:1.04;max-width:16ch">Week dates lookup</h1>
+    <p style="font-size:17px;line-height:1.7;color:#3a4a4d;margin-top:22px;max-width:64ch">Find the exact dates of your ownership week in any year from 2026 through 2032. Each week runs Saturday to Saturday, check-in on the first date and check-out on the second.</p>
+  </section>
+
+  <!-- callouts -->
+  <section style="max-width:1240px;margin:0 auto;padding:26px 32px 6px;display:grid;grid-template-columns:1fr 1fr;gap:18px" class="bpc-wd-callouts">
+    <div style="background:#faf7f0;border:1px solid rgba(28,42,46,.12);border-radius:13px;padding:22px 24px">
+      <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#a6824d;font-weight:700;margin-bottom:10px">How the table works</div>
+      <p style="font-size:14.5px;line-height:1.65;color:#3a4a4d">Week 1 begins on the first Saturday of each calendar year. Every following week is the next Saturday-to-Saturday span, so each row shows the same numbered week across all seven years.</p>
+    </div>
+    <div style="background:#14323b;border-radius:13px;padding:22px 24px;display:flex;gap:14px;align-items:flex-start">
+      <div style="flex:none;width:34px;height:34px;border-radius:50%;background:#a6824d;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px">!</div>
+      <div>
+        <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#e7d8bd;font-weight:700;margin-bottom:8px">Please verify</div>
+        <p style="font-size:14.5px;line-height:1.65;color:#cdd8d2">These dates are generated for reference and must be validated by Resort Management before you make any travel or booking commitments.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- table -->
+  <section class="bpc-wd-tablesec" style="max-width:1240px;margin:0 auto;padding:14px 32px 90px">
+    <div class="bpc-wd-scroll">
+      <table class="bpc-wd-table" id="wd-table"></table>
+    </div>
+    <p class="bpc-wd-note" style="font-size:13px;color:#6f7d77;margin-top:16px;line-height:1.6">Saturday-to-Saturday timeshare schedule. The gold cell marks the current week, and the highlighted column marks the current year. Dates spanning a year-end show both years.</p>
+
+    <!-- mobile view -->
+    <div class="bpc-wd-mobile">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px">
+        <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#a6824d;font-weight:700">Year</span>
+        <select id="wd-year" style="flex:1;max-width:180px;padding:11px 14px;border:1px solid rgba(28,42,46,.25);border-radius:10px;font-size:16px;background:#fff;color:#14323b;font-weight:600"></select>
+      </div>
+      <div id="wd-mobile-rows" style="display:flex;flex-direction:column;border:1px solid rgba(28,42,46,.12);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 18px 50px -38px rgba(20,50,59,.5)"></div>
+      <p style="font-size:13px;color:#6f7d77;margin-top:16px;line-height:1.6">Saturday-to-Saturday schedule for <span id="wd-mobile-year"></span>. The gold row marks the current week. Dates spanning a year-end show both years.</p>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer style="background:#0f262d;color:#9fb0aa">
+    <div style="max-width:1240px;margin:0 auto;padding:64px 32px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:48px">
+      <div>
+        <div style="font-family:'Newsreader',serif;font-size:24px;color:#f2eee4;margin-bottom:14px">Brant Point Courtyard</div>
+        <p style="font-size:14.5px;line-height:1.7;max-width:36ch">A timeshare resort of fourteen private cottages on Nantucket Island, Massachusetts, welcoming guests and owners since the late 1980s.</p>
+      </div>
+      <div>
+        <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#e7d8bd;margin-bottom:16px">Explore</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px 28px;font-size:14.5px">
+          <a href="Home.html">Home</a>
+          <a href="Discover.html">Discover</a>
+          <a href="Gallery.html">Rentals</a>
+          <a href="Sales.html">Ownership</a>
+          <a href="Contact.html">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#e7d8bd;margin-bottom:16px">Visit</div>
+        <div style="display:flex;flex-direction:column;gap:11px;font-size:14.5px">
+          <a href="https://maps.app.goo.gl/YhYcWs8UfTMVi1Yf8" target="_blank" rel="noopener">15 Swain Street, Nantucket</a>
+          <a href="tel:1-508-228-0241">508&middot;228&middot;0241</a>
+          <a href="mailto:resortmanager@brantpointcourtyard.com">Email the Resort</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(159,176,170,.16)">
+      <div style="max-width:1240px;margin:0 auto;padding:20px 32px;font-size:12.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px">
+        <span>&copy; 2026 Brant Point Courtyard. All rights reserved.</span>
+        <span>Nantucket Island &middot; Massachusetts</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+/* Week-dates table generator — Saturday-to-Saturday weeks, 2026-2032 (ported from the design source). */
+(function () {
+  function firstSaturday(y) { var d = new Date(y, 0, 1); var off = (6 - d.getDay() + 7) % 7; return new Date(y, 0, 1 + off); }
+  function weekStart(y, w) { var fs = firstSaturday(y); return new Date(fs.getFullYear(), fs.getMonth(), fs.getDate() + (w - 1) * 7); }
+  var M = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function fmtDay(d) { return M[d.getMonth()] + ' ' + d.getDate(); }
+  function cellLabel(y, w) {
+    var s = weekStart(y, w);
+    var e = new Date(s.getFullYear(), s.getMonth(), s.getDate() + 7);
+    if (e.getFullYear() !== s.getFullYear()) return fmtDay(s) + ', ' + s.getFullYear() + ' – ' + fmtDay(e) + ', ' + e.getFullYear();
+    if (e.getMonth() === s.getMonth()) return fmtDay(s) + ' – ' + e.getDate();
+    return fmtDay(s) + ' – ' + fmtDay(e);
+  }
+  var years = [2026, 2027, 2028, 2029, 2030, 2031, 2032];
+  function currentWeek(y) {
+    var t = new Date(); t.setHours(0, 0, 0, 0);
+    for (var w = 1; w <= 52; w++) { var s = weekStart(y, w); var e = new Date(s.getFullYear(), s.getMonth(), s.getDate() + 7); if (t >= s && t < e) return w; }
+    return null;
+  }
+  var now = new Date().getFullYear();
+  if (years.indexOf(now) === -1) now = years[0];
+  var cw = currentWeek(now);
+
+  // desktop table
+  var colg = '<col style="width:62px">';
+  years.forEach(function (y) { colg += '<col class="' + (y === now ? 'bpc-now' : '') + '">'; });
+  var thead = '<tr><th>Week</th>';
+  years.forEach(function (y) { thead += '<th class="' + (y === now ? 'bpc-now-h' : '') + '">' + y + '</th>'; });
+  thead += '</tr>';
+  var tbody = '';
+  for (var w = 1; w <= 52; w++) {
+    var isNow = w === cw;
+    tbody += '<tr' + (isNow ? ' data-now' : '') + '><td>' + w + '</td>';
+    years.forEach(function (y) { tbody += '<td class="' + ((isNow && y === now) ? 'bpc-now-cell' : '') + '">' + cellLabel(y, w) + '</td>'; });
+    tbody += '</tr>';
+  }
+  var tbl = document.getElementById('wd-table');
+  if (tbl) tbl.innerHTML = '<colgroup>' + colg + '</colgroup><thead>' + thead + '</thead><tbody>' + tbody + '</tbody>';
+
+  // mobile view
+  var sel = document.getElementById('wd-year');
+  if (sel) {
+    years.forEach(function (y) { var o = document.createElement('option'); o.value = y; o.textContent = y; if (y === now) o.selected = true; sel.appendChild(o); });
+    function renderMobile(sy) {
+      var snow = currentWeek(sy);
+      var html = '';
+      for (var w = 1; w <= 52; w++) {
+        var hot = w === snow;
+        html += '<div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 16px;border-top:1px solid rgba(28,42,46,.08);background:' + (hot ? '#a6824d' : (w % 2 === 0 ? '#fbf8f1' : '#fff')) + '">'
+          + '<span style="display:flex;align-items:baseline;gap:8px"><span style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:' + (hot ? 'rgba(255,255,255,.8)' : '#a6824d') + '">Week</span>'
+          + '<span style="font-family:\'Newsreader\',serif;font-size:21px;font-weight:500;color:' + (hot ? '#fff' : '#14323b') + '">' + w + '</span></span>'
+          + '<span style="font-size:14.5px;font-weight:600;color:' + (hot ? '#fff' : '#3a4a4d') + ';text-align:right">' + cellLabel(sy, w) + '</span></div>';
+      }
+      var rows = document.getElementById('wd-mobile-rows'); if (rows) rows.innerHTML = html;
+      var yl = document.getElementById('wd-mobile-year'); if (yl) yl.textContent = sy;
+    }
+    sel.addEventListener('change', function () { renderMobile(parseInt(this.value, 10)); });
+    renderMobile(now);
+  }
+})();
+</script>
+</body>
+</html>
